@@ -1,66 +1,300 @@
 
-**Experiment-11**
-
 **Name: Prithvi Ratkalkar**
 
 **PRN: 25070123165**
 
 **Batch: ENTC A1**
 
-**Title**
 
-**Study and Implementation of Categorical Data Analysis in Python**
+# Experiment 11 – Categorical Data Analysis Using Python
 
-**Aim**
+## Aim
 
-To study and implement various techniques for analyzing categorical data using the Pandas library, including frequency distribution, cross-tabulation, and grouping.
+To analyze categorical data using Python and the Pandas library by performing operations such as frequency counting, cross-tabulation, grouping, filtering, and percentage distribution.
 
-**Objectives**
+---
 
-- To understand the difference between nominal and ordinal categorical data.
-- To perform frequency counting and percentage distribution of categories.
-- To apply cross-tabulation (Crosstab) to find relationships between two variables.
-- To perform data grouping and sorting based on categorical features.
-- To filter specific subsets of data from a categorical dataset.
+## Objectives
 
-**Theory**
+* To understand the concept of categorical data
+* To create and analyze categorical datasets using Pandas
+* To compute frequency counts of categorical variables
+* To identify unique values and the number of unique categories
+* To perform cross-tabulation between categorical variables
+* To calculate percentage distributions
+* To filter and group categorical data for analysis
 
-Categorical data represents types of data which may be divided into groups. In Python’s Pandas library, categorical data is handled efficiently to provide insights into patterns and distributions within a dataset.
+---
 
-**1. Frequency Distribution**
+## Introduction
 
-Frequency counting is the most basic form of categorical analysis. It involves counting how many times each unique value appears in a column. Normalized frequency provides the percentage distribution, allowing for a better understanding of the proportion of each category within the whole.
+Categorical data refers to data that represents categories or groups rather than numerical values. Examples include gender, department, product category, payment mode, and delivery type.
 
-**2. Cross-Tabulation (Crosstab)**
+In data analysis, categorical variables are commonly used to understand patterns, relationships, and distributions within datasets. Python provides powerful libraries such as **Pandas** that allow efficient analysis of categorical data.
 
-Cross-tabulation is used to identify the relationship between two categorical variables. It creates a contingency table that displays the frequency distribution of the variables, such as comparing "Payment Method" across different "Product Categories" or "Gender" across "Grades".
+Using Pandas, analysts can easily perform operations such as counting category frequencies, identifying unique values, creating cross-tabulations, and grouping data based on categories.
 
-**3. Unique Value Identification**
+These techniques are widely used in business analytics, customer behavior analysis, academic research, and survey analysis.
 
-Identifying unique values is crucial for understanding the diversity of a dataset. The unique() function lists all distinct labels, while nunique() provides the total count of distinct categories.
+---
 
-**Metadata and Exploration**
+## Theory
 
-**Value Counts**:Used to determine the frequency of categories like 'Electronics' or 'Clothing' in an order database, or 'Grades' in a student database.
+### 1. Categorical Data
 
-**Percentage Distribution**: By using normalize=True, the data is transformed into percentages to show that a specific category might represent, for example, 40% of the total data.
+Categorical data represents qualitative values that fall into specific categories. Unlike numerical data, categorical data describes attributes or labels.
 
-**Sorting and Filtering**: Data is sorted alphabetically by category or filtered to isolate specific groups, such as extracting only orders belonging to the 'Electronics' category.
+Examples include:
 
-**Advanced Categorical Analysis**
+* Product category
+* Payment method
+* Delivery type
+* Customer type
+* Department
+* Gender
 
-**Crosstab**: This operation is applied to find overlaps, such as determining how many 'New' vs. 'Returning' customers chose 'Express' delivery.
+Categorical data helps in identifying patterns and relationships between different groups.
 
-**Grouping (Groupby)**: This allows for multi-level analysis, such as seeing the distribution of grades specifically within each engineering department.
+---
 
-**Applications of Categorical Analysis**
+### 2. Frequency Count
 
-**Market Research**: Analyzing customer preferences across different demographic categories.
+Frequency count determines how many times each category appears in a dataset.
 
-**Academic Performance**: Studying the distribution of student grades across different departments.
+In Pandas, frequency counts can be calculated using:
 
-**Inventory Management**: Tracking the frequency of sales across various product categories.Logistics: Comparing delivery types and payment methods to optimize supply chain efficiency.
+```python
+df['column_name'].value_counts()
+```
 
-**Conclusion**
-The experiment demonstrates that categorical data analysis is essential for extracting meaningful patterns from non-numerical data. By using value counts, cross-tabulation, and grouping, we can effectively summarize large datasets and understand the relationships between different variables, such as how student performance (Grade) varies across different departments.
+This helps in understanding the distribution of categories within the dataset.
 
+---
+
+### 3. Unique Values
+
+Unique values represent the distinct categories present in a dataset.
+
+Pandas provides:
+
+* `unique()` – Displays all unique values
+* `nunique()` – Returns the number of unique values
+
+Example:
+
+```python
+df['Category'].unique()
+df['Category'].nunique()
+```
+
+---
+
+### 4. Cross Tabulation
+
+Cross-tabulation (contingency table) is used to analyze the relationship between two categorical variables.
+
+It is implemented in Pandas using:
+
+```python
+pd.crosstab(column1, column2)
+```
+
+This helps in understanding how categories interact with each other.
+
+Example:
+
+* Category vs Payment Mode
+* Gender vs Department
+
+---
+
+### 5. Percentage Distribution
+
+Percentage distribution helps understand the proportion of each category in the dataset.
+
+Example:
+
+```python
+df['Category'].value_counts(normalize=True) * 100
+```
+
+This converts frequency counts into percentages.
+
+---
+
+### 6. Filtering Data
+
+Filtering allows extraction of rows that satisfy certain conditions.
+
+Example:
+
+```python
+df[df['Category'] == 'Furniture']
+```
+
+This retrieves only rows belonging to the specified category.
+
+---
+
+### 7. Grouping Data
+
+Grouping organizes data based on one or more categorical variables to perform analysis.
+
+In Pandas, grouping is done using:
+
+```python
+df.groupby('Category')['Payment_Mode'].value_counts()
+```
+
+Grouping helps identify patterns within categories.
+
+---
+
+### 8. Sorting Data
+
+Sorting arranges data in a specified order.
+
+Example:
+
+```python
+df.sort_values(by='Category')
+```
+
+This organizes the dataset alphabetically by category.
+
+---
+
+## Algorithms
+
+### Algorithm 1: Frequency Analysis
+
+1. Start
+2. Import Pandas library
+3. Create or load dataset
+4. Select categorical column
+5. Use `value_counts()` to compute frequency
+6. Display results
+7. Stop
+
+---
+
+### Algorithm 2: Finding Unique Categories
+
+1. Start
+2. Load dataset using Pandas
+3. Select categorical column
+4. Use `unique()` to display distinct categories
+5. Use `nunique()` to count unique categories
+6. Display results
+7. Stop
+
+---
+
+### Algorithm 3: Cross Tabulation
+
+1. Start
+2. Import Pandas library
+3. Load dataset
+4. Select two categorical variables
+5. Use `pd.crosstab()` to create cross table
+6. Display results
+7. Stop
+
+---
+
+### Algorithm 4: Filtering and Grouping Data
+
+1. Start
+2. Load dataset into DataFrame
+3. Apply filtering condition using logical expressions
+4. Group dataset using `groupby()`
+5. Perform required analysis
+6. Display results
+7. Stop
+
+---
+
+## Sample Code Snippets
+
+### Creating Dataset
+
+```python
+import pandas as pd
+
+data = {
+    'Order_ID':['01','02','03'],
+    'Category':['Furniture','Office Supplies','Technology'],
+    'Payment_Mode':['COD','UPI','COD']
+}
+
+df = pd.DataFrame(data)
+print(df)
+```
+
+---
+
+### Frequency Count
+
+```python
+print(df['Category'].value_counts())
+```
+
+---
+
+### Unique Values
+
+```python
+print(df['Category'].unique())
+print(df['Category'].nunique())
+```
+
+---
+
+### Cross Tabulation
+
+```python
+print(pd.crosstab(df['Category'], df['Payment_Mode']))
+```
+
+---
+
+### Filtering Data
+
+```python
+print(df[df['Category'] == 'Furniture'])
+```
+
+---
+
+### Grouping Data
+
+```python
+print(df.groupby('Category')['Payment_Mode'].value_counts())
+```
+
+---
+
+## Applications
+
+* Customer purchase behavior analysis
+* Market basket analysis
+* Academic performance analysis
+* Survey data interpretation
+* Business decision making
+* Demographic data analysis
+
+---
+
+## Advantages
+
+* Easy analysis of categorical variables
+* Helps identify patterns and relationships between categories
+* Efficient data grouping and summarization
+* Supports percentage and frequency analysis
+* Integrates easily with data visualization tools
+
+---
+
+## Result
+
+Categorical data was successfully analyzed using Python and the Pandas library. Various operations such as frequency counting, unique value identification, cross-tabulation, filtering, grouping, and percentage distribution were performed to understand patterns and relationships within the dataset.
